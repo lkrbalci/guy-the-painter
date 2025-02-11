@@ -1,7 +1,7 @@
 ---
 title: "Guy The Painter Dallas, Tx "
 description: "Painting Services In Mesquite, TX, US · Richardson, TX, US · Rockwall, TX, US · Garland, TX, US · Dallas, TX, US · Rowlett, TX, US · Plano, TX, US"
-preloadImg: "/assets/images/landing.jpg"
+preloadImg: "./assets/images/landing.jpg"
 permalink: "/"
 tags: "sitemap" # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
 eleventyNavigation:
@@ -10,8 +10,8 @@ eleventyNavigation:
 ---
 
 {% extends "layouts/base.html" %} {% block head %}
-<link rel="stylesheet" href="./assets/css/local.css" />
-<link rel="stylesheet" href="./assets/css/critical.css" />
+<link rel="stylesheet" href="../assets/css/local.css" />
+<link rel="stylesheet" href="../assets/css/critical.css" />
 
 <!-- Script for Netlify Identity -->
 <script
@@ -87,15 +87,15 @@ eleventyNavigation:
     <picture class="cs-picture">
       <source
         media="(min-width: 601px)"
-        srcset="/assets/images/interior-faux-painting-guy-the-painter.jpg"
+        srcset="./assets/images/interior-faux-painting-guy-the-painter.jpg"
       />
       <source
         media="(max-width: 600px)"
-        srcset="/assets/images/interior-faux-painting-guy-the-painter.jpg"
+        srcset="./assets/images/interior-faux-painting-guy-the-painter.jpg"
       />
       <img
         decoding="async"
-        src="/assets/images/interior-faux-painting-guy-the-painter.jpg"
+        src="./assets/images/interior-faux-painting-guy-the-painter.jpg"
         alt="construction site"
         width="1280"
         height="510"
@@ -203,17 +203,17 @@ eleventyNavigation:
           <!--Mobile Image-->
           <source
             media="(max-width: 600px)"
-            srcset="/assets/less/guy-the-painter-before.png"
+            srcset="./assets/less/guy-the-painter-before.png"
           />
           <!--Tablet and above Image-->
           <source
             media="(min-width: 601px)"
-            srcset="/assets/less/guy-the-painter-before.png"
+            srcset="./assets/less/guy-the-painter-before.png"
           />
           <img
             loading="lazy"
             decoding="async"
-            src="src/assets/less/guy-the-painter-before.png"
+            src="src./assets/less/guy-the-painter-before.png"
             alt="construction"
             width="272"
             height="337"
@@ -227,17 +227,17 @@ eleventyNavigation:
           <!--Mobile Image-->
           <source
             media="(max-width: 600px)"
-            srcset="/assets/less/guy-the-painter-after.png"
+            srcset="./assets/less/guy-the-painter-after.png"
           />
           <!--Tablet and above Image-->
           <source
             media="(min-width: 601px)"
-            srcset="/assets/less/guy-the-painter-after.png"
+            srcset="./assets/less/guy-the-painter-after.png"
           />
           <img
             loading="lazy"
             decoding="async"
-            src="/assets/less/guy-the-painter-after.png"
+            src="./assets/less/guy-the-painter-after.png"
             alt="construction"
             width="243"
             height="367"
@@ -332,72 +332,72 @@ eleventyNavigation:
     </div>
     <div class="cs-image-group">
       <picture class="cs-picture cs-picture-1">
-        <source media="(max-width: 600px)" srcset="/assets/images/gal1.png" />
-        <source media="(min-width: 601px)" srcset="/assets/images/gal1.png" />
+        <source media="(max-width: 600px)" srcset="./assets/images/gal1.png" />
+        <source media="(min-width: 601px)" srcset="./assets/images/gal1.png" />
         <img
           loading="lazy"
           decoding="async"
-          src="/assets/images/gal1.png"
+          src="./assets/images/gal1.png"
           alt="formerly dress you people outside"
           width="380"
           height="271"
         />
       </picture>
       <picture class="cs-picture cs-picture-2">
-        <source media="(max-width: 600px)" srcset="/assets/images/gal2.png" />
-        <source media="(min-width: 601px)" srcset="/assets/images/gal2.png" />
+        <source media="(max-width: 600px)" srcset="./assets/images/gal2.png" />
+        <source media="(min-width: 601px)" srcset="./assets/images/gal2.png" />
         <img
           loading="lazy"
           decoding="async"
-          src="/assets/images/gal2.png"
+          src="./assets/images/gal2.png"
           alt="formal dinner"
           width="380"
           height="271"
         />
       </picture>
       <picture class="cs-picture cs-picture-3">
-        <source media="(max-width: 600px)" srcset="/assets/images/gal3.png" />
-        <source media="(min-width: 601px)" srcset="/assets/images/gal3.png" />
+        <source media="(max-width: 600px)" srcset="./assets/images/gal3.png" />
+        <source media="(min-width: 601px)" srcset="./assets/images/gal3.png" />
         <img
           loading="lazy"
           decoding="async"
-          src="/assets/images/gal3.png"
+          src="./assets/images/gal3.png"
           alt="formerly dress you people outside"
           width="780"
           height="582"
         />
       </picture>
       <picture class="cs-picture cs-picture-4">
-        <source media="(max-width: 600px)" srcset="/assets/images/gal4.png" />
-        <source media="(min-width: 601px)" srcset="/assets/images/gal4.png" />
+        <source media="(max-width: 600px)" srcset="./assets/images/gal4.png" />
+        <source media="(min-width: 601px)" srcset="./assets/images/gal4.png" />
         <img
           loading="lazy"
           decoding="async"
-          src="/assets/images/gal4.png"
+          src="./assets/images/gal4.png"
           alt="recital"
           width="780"
           height="582"
         />
       </picture>
       <picture class="cs-picture cs-picture-5">
-        <source media="(max-width: 600px)" srcset="/assets/images/gal5.png" />
-        <source media="(min-width: 601px)" srcset="/assets/images/gal5.png" />
+        <source media="(max-width: 600px)" srcset="./assets/images/gal5.png" />
+        <source media="(min-width: 601px)" srcset="./assets/images/gal5.png" />
         <img
           loading="lazy"
           decoding="async"
-          src="/assets/images/gal7.png"
+          src="./assets/images/gal7.png"
           alt="formal evening"
           width="380"
           height="271"
         />
       </picture>
       <picture class="cs-picture cs-picture-6">
-        <source media="(max-width: 600px)" srcset="/assets/images/gal7.png" />
-        <source media="(min-width: 601px)" srcset="/assets/images/gal7.png" />
+        <source media="(max-width: 600px)" srcset="./assets/images/gal7.png" />
+        <source media="(min-width: 601px)" srcset="./assets/images/gal7.png" />
         <img
           loading="lazy"
           decoding="async"
-          src="/assets/images/gal7.png"
+          src="./assets/images/gal7.png"
           alt="formal dinner"
           width="380"
           height="271"
