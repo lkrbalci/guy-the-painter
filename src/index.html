@@ -1,388 +1,494 @@
 ---
-title: 'Pixel Perfect Websites | Code Stitch Web Designs | Denver, CO'
-description: 'Meta description for the page'
-preloadImg: '/assets/images/landing.jpg'
-permalink: '/'
-tags: 'sitemap' # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
+title: "Guy The Painter Dallas, Tx "
+description: "Painting Services In Mesquite, TX, US · Richardson, TX, US · Rockwall, TX, US · Garland, TX, US · Dallas, TX, US · Rowlett, TX, US · Plano, TX, US"
+preloadImg: "/assets/images/landing.jpg"
+permalink: "/"
+tags: "sitemap" # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
 eleventyNavigation:
   key: Home
   order: 100
 ---
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/base.html" %} {% block head %}
+<link rel="stylesheet" href="/assets/css/local.css" />
+<link rel="stylesheet" href="/assets/css/critical.css" />
 
-{% block head %}
-    <link rel="stylesheet" href="/assets/css/local.css"/>
-    <link rel="stylesheet" href="/assets/css/critical.css"/>
+<!-- Script for Netlify Identity -->
+<script
+  defer
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+<script defer>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 
-    <!-- Script for Netlify Identity -->
-    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script defer>
-        if (window.netlifyIdentity) {
-            window
-                .netlifyIdentity
-                .on('init', (user) => {
-                    if (!user) {
-                        window
-                            .netlifyIdentity
-                            .on('login', () => {
-                                document.location.href = '/admin/';
-                            });
-                    }
-                });
-        }
-    </script>
+<!-- JSON Schema Markup -->
+<script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "LocalBusiness",
+      "name": "{{ client.name }}",
+      {% if preloadImg %}"image": "{{ preloadImg }}",{% endif %}
+      {% if client.phoneFormatted %}"telephone": "{{ client.phoneFormatted }}",{% endif %}
+      {% if client.email %}"email": "{{ client.email }}",{% endif %}
+      {% if client.address %}
+          "address": {
+              "@type": "PostalAddress"{% if client.address.lineOne %},
+                  "streetAddress": "{{ client.address.lineOne }}{% if client.address.lineTwo %}, {{ client.address.lineTwo }}{% endif %}"
+              {% endif %}
+              {% if client.address.city %},
+                  "addressLocality": "{{ client.address.city }}"
+              {% endif %}
+              {% if client.address.state %},
+                  "addressRegion": "{{ client.address.state }}"
+              {% endif %}
+              {% if client.address.zip %},
+                  "postalCode": "{{ client.address.zip }}"
+              {% endif %}
+              {% if client.address.country %},
+                  "addressCountry": "{{ client.address.country }}"
+              {% endif %}
+          },
+      {% endif %}
+      {% if client.domain and page.url %}"url": "{{ client.domain }}{{ page.url }}",{% endif %}
+      {% if client.socials %}
+          "sameAs": [{% for platform, url in client.socials %}
+                  {% if not loop.first %},{% endif %}
+                  "{{ url }}"
+              {% endfor %}]
+      {% endif %}
+  }
+</script>
+{% endblock %} {% block body %}
+<!-- ============================================ -->
+<!--                     Hero                     -->
+<!-- ============================================ -->
 
-    <!-- JSON Schema Markup -->
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "LocalBusiness",
-            "name": "{{ client.name }}",
-            {% if preloadImg %}"image": "{{ preloadImg }}",{% endif %}
-            {% if client.phoneFormatted %}"telephone": "{{ client.phoneFormatted }}",{% endif %}
-            {% if client.email %}"email": "{{ client.email }}",{% endif %}
-            {% if client.address %}
-                "address": {
-                    "@type": "PostalAddress"{% if client.address.lineOne %},
-                        "streetAddress": "{{ client.address.lineOne }}{% if client.address.lineTwo %}, {{ client.address.lineTwo }}{% endif %}"
-                    {% endif %}
-                    {% if client.address.city %},
-                        "addressLocality": "{{ client.address.city }}"
-                    {% endif %}
-                    {% if client.address.state %},
-                        "addressRegion": "{{ client.address.state }}"
-                    {% endif %}
-                    {% if client.address.zip %},
-                        "postalCode": "{{ client.address.zip }}"
-                    {% endif %}
-                    {% if client.address.country %},
-                        "addressCountry": "{{ client.address.country }}"
-                    {% endif %}
-                },
-            {% endif %}
-            {% if client.domain and page.url %}"url": "{{ client.domain }}{{ page.url }}",{% endif %}
-            {% if client.socials %}
-                "sameAs": [{% for platform, url in client.socials %}
-                        {% if not loop.first %},{% endif %}
-                        "{{ url }}"
-                    {% endfor %}]
-            {% endif %}
-        }
-    </script>
-{% endblock %}
-
-{% block body %}
-
-    <!-- ============================================ -->
-    <!--                    Hero                      -->
-    <!-- ============================================ -->
-
-    <section id="hero">
-        <div class="cs-container">
-            <div class="cs-flex-group">
-                <span class="cs-topper">mountain hiking society</span>
-                <h1 class="cs-title">Explore the World with Exciting People</h1>
-                <p class="cs-text">
-                    Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Nibh tortor id aliquet lectus proin nibh condimentum.
-                </p>
-                <a href="/about" class="cs-button-solid">Explore More</a>
-                <a href="/contact" class="cs-button-transparent">
-                    <img
-                    class="cs-img"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg"
-                    alt="play icon"
-                    width="17"
-                    height="17"/>
-                    Get in Touch
-                </a>
-            </div>
-        </div>
-
-        <!-- Background Image -->
-        <picture class="cs-picture">
-            <source media="(max-width: 600px)" srcset="/assets/images/landing-m.webp">
-            <source media="(min-width: 601px)" srcset="/assets/images/landing.jpg">
-            <img aria-hidden="true" decoding="async" src="/assets/images/landing.jpg" alt="new home" width="2500" height="1667" loading="eager">
+<section id="hero-1946">
+  <div class="cs-container">
+    <div class="cs-content">
+      <h2 class="cs-title">Crafting Beautiful Spaces.</h2>
+      <div class="cs-flex">
+        <p class="cs-text">
+          From straightforward painting jobs to intricate restoration work, we
+          successfully cope with tasks of varying complexity.
+        </p>
+        <a href="" class="cs-button-solid">Read More</a>
+      </div>
+    </div>
+    <picture class="cs-picture">
+      <source
+        media="(min-width: 601px)"
+        srcset="/assets/images/interior-faux-painting-guy-the-painter.jpg"
+      />
+      <source
+        media="(max-width: 600px)"
+        srcset="/assets/images/interior-faux-painting-guy-the-painter.jpg"
+      />
+      <img
+        decoding="async"
+        src="/assets/images/interior-faux-painting-guy-the-painter.jpg"
+        alt="construction site"
+        width="1280"
+        height="510"
+      />
+    </picture>
+    <ul class="cs-card-group">
+      <li class="cs-item">
+        <picture class="cs-icon-picture">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/tool.svg"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
         </picture>
-    </section>
-
-    <!-- ============================================ -->
-    <!--                  Services                    -->
-    <!-- ============================================ -->
-
-    <section id="services" class="services">
-        <!-- Get Icons From flaticon.com -->
-        <div class="card">
-            <picture>
-                <img
-                aria-hidden="true"
-                decoding="async"
-                src="/assets/svgs/service1.svg"
-                alt="appliance"
-                width="48"
-                height="48"/>
-            </picture>
-            <h2>Service 1</h2>
-            <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+        <!-- Text Grouped For Flexbox-->
+        <div class="cs-text-group">
+          <h3 class="cs-h3">Painting & Staining</h3>
+          <p class="cs-item-text">
+            Transforming interiors and exteriors with exceptional painting and
+            staining services.
+          </p>
         </div>
-        <div class="card">
-            <picture>
-                <img
-                aria-hidden="true"
-                decoding="async"
-                src="/assets/svgs/service2.svg"
-                alt="appliance"
-                width="48"
-                height="48"/>
-            </picture>
-            <h2>Service 2</h2>
-            <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+      </li>
+      <li class="cs-item">
+        <picture class="cs-icon-picture">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/hard-hat.svg"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+        </picture>
+        <!-- Text Grouped For Flexbox-->
+        <div class="cs-text-group">
+          <h3 class="cs-h3">Remodeling Services</h3>
+          <p class="cs-item-text">
+            Updating kitchens, bathrooms, and more to create your dream living
+            spaces.
+          </p>
         </div>
-        <div class="card">
-            <picture>
-                <img
-                aria-hidden="true"
-                decoding="async"
-                src="/assets/svgs/service3.svg"
-                alt="appliance"
-                width="48"
-                height="48"/>
-            </picture>
-            <h2>Service 3</h2>
-            <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+      </li>
+      <li class="cs-item">
+        <picture class="cs-icon-picture">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/double-bed.svg"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+        </picture>
+        <!-- Text Grouped For Flexbox-->
+        <div class="cs-text-group">
+          <h3 class="cs-h3">Interior Enhancements</h3>
+          <p class="cs-item-text">
+            From color consultations to detailed finishes, enhancing your home's
+            interior beauty.
+          </p>
         </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--                 Side By Side                 -->
-    <!-- ============================================ -->
-
-    <section id="sbs">
-        <div class="cs-container">
-            <!-- Left Image Section -->
-            <div class="cs-left">
-                <picture class="cs-picture cs-picture1">
-                    <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">
-                    <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">
-                    <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="cabinets" loading="lazy" width="400" height="563">
-                </picture>
-                <picture class="cs-picture cs-picture2">
-                    <source media="(max-width: 600px)" srcset="/assets/images/construction-m.jpg">
-                    <source media="(min-width: 601px)" srcset="/assets/images/construction.jpg">
-                    <img aria-hidden="true" decoding="async" src="/assets/images/construction.jpg" alt="house" loading="lazy" width="400" height="563">
-                </picture>
-            </div>
-            <!-- Right Content Section-->
-            <div class="cs-right">
-                <span class="cs-topper">About Us</span>
-                <h2 class="cs-title">About Company Title</h2>
-                <p class="cs-text">
-                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-                </p>
-                <p class="cs-text">
-                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-                </p>
-                <div class="cs-flex-group">
-                    <p class="cs-flex-p">
-                        In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
-                    </p>
-                    <span class="cs-name">Justin Time</span>
-                    <span class="cs-job">CEO-Founder</span>
-                    <img 
-                    class="cs-quote-icon"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-                    alt="gavel"
-                    width="136"
-                    height="77"/>
-                </div>
-                <a href="/about" class="cs-button-solid">More About Us</a>
-            </div>
+      </li>
+      <li class="cs-item">
+        <picture class="cs-icon-picture">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/building.svg"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+        </picture>
+        <!-- Text Grouped For Flexbox-->
+        <div class="cs-text-group">
+          <h3 class="cs-h3">Restoration & Repair</h3>
+          <p class="cs-item-text">
+            Bringing back the charm and integrity of your property through
+            expert restoration.
+          </p>
         </div>
-    </section>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    <!-- ============================================ -->
-    <!--            Extra Content To Rank             -->
-    <!-- ============================================ -->
+<!-- ============================================ -->
+<!--                  Side By Side                -->
+<!-- ============================================ -->
 
-    <section id="sbs-r">
-        <div class="cs-container">
-            <!-- Left Image Section -->
-            <div class="cs-left">
-                <picture class="cs-picture cs-picture1">
-                    <source media="(max-width: 600px)" srcset="/assets/images/construction-m.jpg">
-                    <source media="(min-width: 601px)" srcset="/assets/images/construction.jpg">
-                    <img aria-hidden="true" decoding="async" src="/assets/images/construction.jpg" alt="house" loading="lazy" width="400" height="560">
-                </picture>
-                <picture class="cs-picture cs-picture2">
-                    <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">
-                    <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">
-                    <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="cabinets" loading="lazy" width="400" height="560">
-                </picture>
-            </div>
-            <!-- Right Content Section-->
-            <div class="cs-right">
-                <span class="cs-topper">SEO Ranking</span>
-                <h2 class="cs-title">Talk about a main service keyword</h2>
-                <p class="cs-text">
-                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-                </p>
-                <p class="cs-text">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur, iure nihil ipsam qui atque commodi id voluptatem nesciunt, quis animi fuga cum doloribus! Eaque laboriosam, unde consectetur iure asperiores ullam. Consequuntur debitis a voluptatibus vitae optio autem explicabo quia neque est quas, in placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus modi laudantium voluptatibus rem libero error minus quia eligendi sapiente eos.
-                </p>
-                <a href="/blog" class="cs-button-solid">Read our Blog</a>
-            </div>
+<section id="sbs-2295">
+  <div class="cs-container">
+    <div class="cs-image-group">
+      <!--Main Image-->
+      <div class="cs-picture-wrapper1">
+        <picture class="cs-picture cs-picture1">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/less/guy-the-painter-before.png"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/less/guy-the-painter-before.png"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="src/assets/less/guy-the-painter-before.png"
+            alt="construction"
+            width="272"
+            height="337"
+          />
+        </picture>
+        <span class="cs-tag">Before</span>
+      </div>
+      <!--Small Image-->
+      <div class="cs-picture-wrapper2">
+        <picture class="cs-picture cs-picture2">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/less/guy-the-painter-after.png"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/less/guy-the-painter-after.png"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/less/guy-the-painter-after.png"
+            alt="construction"
+            width="243"
+            height="367"
+          />
+        </picture>
+        <span class="cs-tag">After</span>
+      </div>
+      <img
+        class="cs-arrow"
+        loading="lazy"
+        decoding="async"
+        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/before-after-arrow.svg"
+        alt="arrow"
+        width="148"
+        height="54"
+      />
+    </div>
+    <div class="cs-content">
+      <span class="cs-topper">Service</span>
+      <h2 class="cs-title">Boosting Curb Appeal with Exterior Painting</h2>
+      <p class="cs-text">
+        Transforming the exterior of a home with a fresh coat of paint,
+        enhancing curb appeal and protecting it from the elements. This project
+        emphasized thorough surface preparation and the use of durable,
+        weather-resistant paints for long-lasting beauty.
+      </p>
+      <h3 class="cs-h3">Our Process</h3>
+      <ul class="cs-ul">
+        <li class="cs-li">
+          <strong>Power Washing & Cleaning</strong>: Thoroughly cleaned exterior
+          surfaces to remove dirt, mildew, and loose paint, ensuring proper
+          paint adhesion.
+        </li>
+        <li class="cs-li">
+          <strong>Surface Preparation & Repair</strong>: Scraped, sanded, and
+          primed surfaces. Repaired cracks, caulked gaps, and addressed any wood
+          rot to create a smooth, paintable surface.
+        </li>
+        <li class="cs-li">
+          <strong>Premium Exterior Painting</strong>: Applied high-quality,
+          weather-resistant exterior paint using professional techniques for
+          even coverage and maximum durability.
+        </li>
+        <li class="cs-li">
+          <strong>Detailed Site Cleanup</strong>: Ensured a clean work area,
+          protected landscaping, and left the property looking pristine after
+          the painting was completed.
+        </li>
+      </ul>
+      <a href="" class="cs-button-solid">Book An Appointment</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Gallery                     -->
+<!-- ============================================ -->
+
+<section id="gallery-42">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex">
+        <span class="cs-topper">Our Portfolio</span>
+        <h2 class="cs-title">View Our Gallery</h2>
+      </div>
+      <div class="cs-flex">
+        <p class="cs-text">
+          At Guy The Painter & Co., we believe in crafting beautiful spaces that
+          truly reflect our clients' visions. Our gallery showcases the
+          transformative power of our services, from refreshing interiors with
+          vibrant color to restoring the timeless beauty of historic homes. Step
+          inside and see how we turn houses into homes and spaces into stunning
+          environments.
+        </p>
+        <a aria-label="view more pictures" href="" class="cs-link">
+          View More
+          <!-- SVG Arrow -->
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.01 11H5C4.45 11 4 11.45 4 12C4 12.55 4.45 13 5 13H16.01V14.79C16.01 15.24 16.55 15.46 16.86 15.14L19.64 12.35C19.83 12.15 19.83 11.84 19.64 11.64L16.86 8.84999C16.55 8.52999 16.01 8.75999 16.01 9.19999V11Z"
+              fill="#14142B"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="cs-image-group">
+      <picture class="cs-picture cs-picture-1">
+        <source media="(max-width: 600px)" srcset="/assets/images/gal1.png" />
+        <source media="(min-width: 601px)" srcset="/assets/images/gal1.png" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/gal1.png"
+          alt="formerly dress you people outside"
+          width="380"
+          height="271"
+        />
+      </picture>
+      <picture class="cs-picture cs-picture-2">
+        <source media="(max-width: 600px)" srcset="/assets/images/gal2.png" />
+        <source media="(min-width: 601px)" srcset="/assets/images/gal2.png" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/gal2.png"
+          alt="formal dinner"
+          width="380"
+          height="271"
+        />
+      </picture>
+      <picture class="cs-picture cs-picture-3">
+        <source media="(max-width: 600px)" srcset="/assets/images/gal3.png" />
+        <source media="(min-width: 601px)" srcset="/assets/images/gal3.png" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/gal3.png"
+          alt="formerly dress you people outside"
+          width="780"
+          height="582"
+        />
+      </picture>
+      <picture class="cs-picture cs-picture-4">
+        <source media="(max-width: 600px)" srcset="/assets/images/gal4.png" />
+        <source media="(min-width: 601px)" srcset="/assets/images/gal4.png" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/gal4.png"
+          alt="recital"
+          width="780"
+          height="582"
+        />
+      </picture>
+      <picture class="cs-picture cs-picture-5">
+        <source media="(max-width: 600px)" srcset="/assets/images/gal5.png" />
+        <source media="(min-width: 601px)" srcset="/assets/images/gal5.png" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/gal7.png"
+          alt="formal evening"
+          width="380"
+          height="271"
+        />
+      </picture>
+      <picture class="cs-picture cs-picture-6">
+        <source media="(max-width: 600px)" srcset="/assets/images/gal7.png" />
+        <source media="(min-width: 601px)" srcset="/assets/images/gal7.png" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/gal7.png"
+          alt="formal dinner"
+          width="380"
+          height="271"
+        />
+      </picture>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                   Contact                    -->
+<!-- ============================================ -->
+
+<section id="contact-2251">
+  <div class="cs-container">
+    <!--Copy and paste any iframe from Google Maps-->
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27801.369335909083!2d-96.921956!3d32.70873500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e82b81f3a3a2d%3A0x53724d9a808b8ce5!2sDallas-Fort%20Worth%20Metropolitan%20Area%2C%20TX!5e1!3m2!1sen!2sus!4v1739289463125!5m2!1sen!2sus"
+      width="600"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <div class="cs-wrapper">
+      <div class="cs-content">
+        <span class="cs-topper">Contact Us</span>
+        <h2 class="cs-title">Your Local Painting & Renovation Experts</h2>
+        <p class="cs-text">
+          Serving the Dallas/Fort Worth area, Guy The Painter & Co. is ready to
+          provide you with top-quality painting, remodeling, and restoration
+          services. Contact us today for a prompt response and to discuss your
+          project needs. We're here to make your vision a reality.
+        </p>
+      </div>
+      <form class="cs-form" id="cs-form-2251" name="Contact Form" method="post">
+        <label class="cs-label">
+          <input
+            class="cs-input"
+            required
+            type="text"
+            id="name-2251"
+            name="name"
+            placeholder="Name"
+          />
+        </label>
+        <label class="cs-label">
+          <input
+            class="cs-input"
+            required
+            type="email"
+            id="email-2251"
+            name="email"
+            placeholder="Email"
+          />
+        </label>
+        <label class="cs-label">
+          <input
+            class="cs-input"
+            type="tel"
+            id="phone-2251"
+            name="phone"
+            placeholder="Phone"
+          />
+        </label>
+        <label class="cs-label">
+          <select class="cs-select" name="class" id="classes-2251">
+            <option value="Service 1">Services</option>
+            <option value="Service 2">Services</option>
+            <option value="Service 3">Services</option>
+            <option value="Service 4">Services</option>
+          </select>
+        </label>
+        <label class="cs-label cs-message">
+          <textarea
+            class="cs-input cs-textarea"
+            required
+            name="Message"
+            id="message-2251"
+            placeholder="Message"
+          ></textarea>
+        </label>
+        <div class="cs-button-wrapper">
+          <button class="cs-button-solid cs-submit" type="submit">
+            Schedule Consultation
+          </button>
         </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--                   Gallery                    -->
-    <!-- ============================================ -->
-
-    <section id="gallery">
-        <div class="cs-container">
-            <span class="cs-topper">Our Portfolio</span>
-            <h2 class="cs-title">Et orci volutpat, back up generator installations</h2>
-            <div class="cs-image-group">
-                <!-- Row 1-->
-                <div class="cs-row cs-row-1">
-                    <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-                    <picture class="cs-picture cs-picture1">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port1-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port1.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port1.jpg" alt="new hallway" loading="lazy" width="400" height="560">
-                    </picture>
-                    <picture class="cs-picture cs-picture2">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port4-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port4.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port4.jpg" alt="new home construction" loading="lazy" width="400" height="560">
-                    </picture>
-                    <picture class="cs-picture cs-picture3">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port7-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port7.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port7.jpg" alt="building a new wall" loading="lazy" width="400" height="560">
-                    </picture>
-                </div>
-                <!-- Row 2 -->
-                <div class="cs-row cs-row-2">
-                    <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-                    <picture class="cs-picture cs-picture1">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port2-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port2.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port2.jpg" alt="new kitchen" loading="lazy" width="400" height="560">
-                    </picture>
-                    <picture class="cs-picture cs-picture2">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port5-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port5.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port5.jpg" alt="apartment addition" loading="lazy" width="400" height="560">
-                    </picture>
-                    <picture class="cs-picture cs-picture3">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port8-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port8.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port8.jpg" alt="kew kitchen cabinets" loading="lazy" width="400" height="560">
-                    </picture>
-                </div>
-                <!-- Row 3 -->
-                <div class="cs-row cs-row-3">
-                    <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-                    <picture class="cs-picture cs-picture1">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port3-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port3.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port3.jpg" alt="new kitchen" loading="lazy" width="400" height="560">
-                    </picture>
-                    <picture class="cs-picture cs-picture2">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port6-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port6.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port6.jpg" alt="apartment addition" loading="lazy" width="400" height="560">
-                    </picture>
-                    <picture class="cs-picture cs-picture3">
-                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port9-m.jpg">
-                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port9.jpg">
-                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port9.jpg" alt="kew kitchen cabinets" loading="lazy" width="400" height="560">
-                    </picture>
-
-                </div>
-            </div>
-            <a href="/projects" class="cs-button-solid">View Full Gallery</a>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--                   Reviews                    -->
-    <!-- ============================================ -->
-
-    <section id="reviews">
-        <div class="cs-container">
-            <span class="cs-topper">Our Reviews</span>
-            <h2 class="cs-title">Words From Our Customers</h2>
-            <p class="cs-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum dolor sit amet.
-            </p>
-            <ul class="cs-card-group">
-                <!-- Review 1 -->
-                <li class="cs-item">
-                    <img
-                    class="cs-item-img"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile5.png"
-                    alt="profile picture"
-                    width="80"
-                    height="80"/>
-                    <p class="cs-item-p">
-                        Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget.
-                    </p>
-                    <span class="cs-reviewer">
-                        Jon Doe
-                        <span class="cs-desc">Homeowner</span>
-                    </span>
-                    <img
-                    class="cs-item-stars"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
-                    alt="stars"
-                    width="96"
-                    height="16"/>
-                </li>
-                <!-- Review 2 -->
-                <li class="cs-item">
-                    <img
-                    class="cs-item-img"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile-4.png"
-                    alt="profile picture"
-                    width="80"
-                    height="80"/>
-                    <p class="cs-item-p">
-                        Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget.
-                    </p>
-                    <span class="cs-reviewer">
-                        Jane Doe
-                        <span class="cs-desc">Homeowner</span>
-                    </span>
-                    <img
-                    class="cs-item-stars"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
-                    alt="stars"
-                    width="96"
-                    height="16"/>
-                </li>
-            </ul>
-            <a aria-label="read more reviews" href="/reviews" class="cs-button-solid">Our Reviews</a>
-        </div>
-    </section>
-
-    {% include 'components/cta.html' %}
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}
